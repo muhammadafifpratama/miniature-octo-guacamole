@@ -1,5 +1,5 @@
-const asd = require("./usermodel")
+const usermodel = require("./usermodel")
 
 module.exports = {
-    asd
+    usermodel
 }

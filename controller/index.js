@@ -1,5 +1,5 @@
-let testing = require("./usercontroller")
+let usercontroller = require("./usercontroller")
 
 module.exports = {
-    testing
+    usercontroller
 }

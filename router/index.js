@@ -1,5 +1,5 @@
-let tesruter = require("./userouter")
+let userouter = require("./userouter")
 
 module.exports = {
-    tesruter
+    userouter
 }
