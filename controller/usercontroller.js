@@ -1,5 +1,12 @@
 const asd = require("../models")
 const puppeteer = require('puppeteer');
+let express = require('express');
+let app = express()
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
 
 module.exports = {
     getdata: (req, res) => {
@@ -25,4 +32,16 @@ module.exports = {
         res.set({ 'Content-Type': 'application/pdf', 'Content-Length': pdf.length })
         res.status(200).send(pdf)
     },
+    send: (req, res) => {
+        io.on('connection', (socket) => {
+            socket.on('chat message', (msg) => {
+                io.emit('chat message', msg);
+            });
+        });
+
+        res.sendFile(__dirname + '/index.html');
+    },
+    receive: (req, res) => {
+        res.sendFile(__dirname + '/index.html');
+    }
 }
